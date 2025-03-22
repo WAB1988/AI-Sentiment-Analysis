@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Chatbot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="text-center mb-0">Sentiment Analysis Chatbot</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <label for="urlInput" class="form-label">Enter URL to analyze:</label>
+                            <input type="url" class="form-control" id="urlInput" placeholder="Enter URL (e.g., IMDB reviews page)">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="queryInput" class="form-label">What would you like to analyze?</label>
+                            <input type="text" class="form-control" id="queryInput" placeholder="E.g., Analyze the overall sentiment of these reviews">
+                        </div>
+
+                        <button class="btn btn-primary w-100" onclick="analyzeSentiment()" id="analyzeBtn">
+                            Analyze Sentiment
+                        </button>
+
+                        <div class="mt-4" id="loadingSpinner" style="display: none;">
+                            <div class="d-flex justify-content-center">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                            <p class="text-center mt-2">Analyzing sentiment... Please wait.</p>
+                        </div>
+
+                        <div class="mt-4" id="resultSection" style="display: none;">
+                            <h4>Analysis Results:</h4>
+                            <div class="card">
+                                <div class="card-body" id="analysisResult">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
